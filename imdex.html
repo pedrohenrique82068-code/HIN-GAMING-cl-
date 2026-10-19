@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WIN GAMING 🎮 Clã Oficial</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Arial',sans-serif}
+body{background:#0f0b26;color:#fff;min-height:100vh;overflow-x:hidden;position:relative}
+
+/* Camadas de fundo animado */
+.fundo-animado{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-2;background:linear-gradient(160deg,#1a1040,#0d1b38,#14254a)}
+.nuvens-container{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;overflow:hidden}
+.chuva-container{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;overflow:hidden}
+
+/* Animação nuvens descendo */
+.nuvem{position:absolute;font-size:3rem;opacity:0.25;animation:queda-nuvem linear infinite}
+@keyframes queda-nuvem{
+  0%{transform:translateY(-120px)}
+  100%{transform:translateY(110vh)}
+}
+
+/* Animação gotas de chuva */
+.gota{position:absolute;width:2px;height:18px;background:rgba(180,210,255,0.35);animation:queda-gota linear infinite;border-radius:2px}
+@keyframes queda-gota{
+  0%{transform:translateY(-20px)}
+  100%{transform:translateY(105vh)}
+}
+
+header{background:linear-gradient(90deg,#7b2cbf,#4a0080);padding:28px;text-align:center;border-bottom:4px solid #ffcc00;box-shadow:0 4px 12px rgba(255,204,0,0.3)}
+h1{font-size:2.8rem;color:#ffec66}
+.subheader{margin-top:8px;font-size:1.2rem;color:#ffe499}
+
+/* Menu de abas */
+.menu-aba{background:#181030;display:flex;flex-wrap:wrap;justify-content:center;gap:6px;padding:14px;position:sticky;top:0;z-index:999}
+.botao-aba{padding:11px 18px;background:#3d1a70;color:#ffec88;border:none;border-radius:22px;font-weight:bold;font-size:1rem;cursor:pointer;transition:all 0.25s}
+.botao-aba:hover{background:#6b2fc9;transform:translateY(-3px);box-shadow:0 0 10px #ffdd44}
+.botao-aba.ativo{background:#9d4edd;color:#fff;box-shadow:0 0 12px #c77dff}
+
+/* Conteúdo das abas */
+.container{max-width:920px;margin:26px auto;padding:0 16px}
+.pagina{display:none;background:rgba(25,15,50,0.82);padding:24px;border-radius:18px;margin-bottom:22px;border:2px solid #6020aa;box-shadow:0 0 14px rgba(155,80,255,0.25)}
+.pagina.visivel{display:block}
+h2{color:#ffdd66;margin-bottom:14px;border-left:5px solid #ffcc22;padding-left:10px}
+p{margin-bottom:12px;font-size:1.05rem;line-height:1.7}
+ul{margin:12px 0 12px 24px}
+li{margin:8px 0;font-size:1.03rem}
+
+/* Formulário */
+label{display:block;margin-top:14px;font-weight:bold;color:#ffe8aa}
+input,textarea{width:100%;padding:10px;border-radius:9px;border:none;background:#2b1852;color:#fff;font-size:1rem}
+button.enviar{margin-top:16px;padding:12px 22px;background:#ffaa22;color:#111;font-weight:bold;border-radius:12px;border:none;cursor:pointer;font-size:1.05rem}
+button.enviar:hover{background:#ffcc44}
+
+/* Rodapé */
+footer{margin-top:40px;padding:20px;text-align:center;background:rgba(21,12,44,0.85);border-top:3px solid #7b2cbf;color:#ddbbff}
+</style>
+</head>
+<body>
+<div class="fundo-animado"></div>
+<div class="nuvens-container" id="nuvens"></div>
+<div class="chuva-container" id="chuva"></div>
+
+<header>
+<h1>🎮 WIN GAMING 🎮</h1>
+<p class="subheader">Clã de jogos — comunidade e partidas</p>
+</header>
+
+<div class="menu-aba">
+<button class="botao-aba ativo" data-pag="inicio">🏠 Início</button>
+<button class="botao-aba" data-pag="sobre">📜 Sobre Nós</button>
+<button class="botao-aba" data-pag="regras">⚖️ Regras</button>
+<button class="botao-aba" data-pag="recrutamento">📝 Recrutamento</button>
+<button class="botao-aba" data-pag="eventos">🎉 Eventos</button>
+<button class="botao-aba" data-pag="membros">👥 Membros</button>
+</div>
+
+<div class="container">
+<!-- Página Início -->
+<div class="pagina visivel" id="pag-inicio">
+<h2>Bem‑vindo ao WIN GAMING! 🚀</h2>
+<p>Somos um clã animado, sempre com jogadores ativos, conversas e partidas incríveis.</p>
+<p>Quer entrar? Vá até a aba <strong>Recrutamento</strong> para preencher sua ficha! 📋</p>
+</div>
+
+<!-- Página Sobre Nós -->
+<div class="pagina" id="pag-sobre">
+<h2>Quem somos? 🤩</h2>
+<p>O WIN GAMING nasceu para reunir pessoas que amam jogar, conversar e evoluir juntos!</p>
+<ul>
+<li>✅ Valorizamos a amizade acima das vitórias</li>
+<li>✅ Fazemos treinos semanais</li>
+<li>✅ Temos momentos só para brincar e rir</li>
+<li>✅ Sempre abertos para novos amigos</li>
+</ul>
+</div>
+
+<!-- Página Regras -->
+<div class="pagina" id="pag-regras">
+<h2>Regras do clã 📌</h2>
+<ul>
+<li>🤝 Respeite todos os membros</li>
+<li>⚡ Tente ser ativo no jogo e no chat</li>
+<li>📅 Avisar quando não puder participar de eventos</li>
+<li>🚫 Não provoque brigas desnecessárias</li>
+<li>💪 Apoie seus colegas nas partidas</li>
+</ul>
+</div>
+
+<!-- Página Recrutamento -->
+<div class="pagina" id="pag-recrutamento">
+<h2>Formulário de Recrutamento 📝</h2>
+<p>Preencha a ficha para se candidatar a uma vaga no nosso clã:</p>
+<label>Nome:</label>
+<input type="text">
+<label>Idade:</label>
+<input type="number">
+<label>Nick no jogo:</label>
+<input type="text">
+<label>Patente:</label>
+<input type="text">
+<label>É ativo dentro e fora do jogo?</label>
+<textarea rows="2"></textarea>
+<label>Tem compromisso com o clã?</label>
+<textarea rows="2"></textarea>
+<label>Quais dias você fica ativo?</label>
+<input type="text">
+<label>Que horas você joga?</label>
+<input type="text">
+<label>Trabalha ou estuda?</label>
+<input type="text">
+<label>Em qual período estuda?</label>
+<input type="text">
+<button class="enviar">Enviar Candidatura</button>
+<p style="margin‑top:1rem;font‑size:0.9rem;color:#bbb;">*Anote seus dados e envie no grupo oficial do clã.</p>
+</div>
+
+<!-- Página Eventos -->
+<div class="pagina" id="pag-eventos">
+<h2>Nossos eventos 🎉</h2>
+<ul>
+<li>🎯 Treinos coletivos às terças e quintas‑feiras</li>
+<li>🎪 Noite de brincadeiras no sábado</li>
+<li>🏆 Torneios internos do clã</li>
+<li>🎁 Sorteios e desafios divertidos</li>
+</ul>
+</div>
+
+<!-- Página Membros -->
+<div class="pagina" id="pag-membros">
+<h2>Membros do WIN GAMING 👥</h2>
+<p>Fundadores: Guigui, J., Bryan, Aquila</p>
+<p>Novos membros aparecerão aqui depois da aprovação!</p>
+</div>
+</div>
+
+<footer>
+<p>© 2026 WIN GAMING 🎮 Todos os direitos reservados</p>
+</footer>
+
+<script>
+// Troca de abas
+const botoesAba = document.querySelectorAll('.botao-aba');
+botoesAba.forEach(botao=>{
+  botao.addEventListener('click',()=>{
+    botoesAba.forEach(b=>b.classList.remove('ativo'));
+    botao.classList.add('ativo');
+    const idPag = 'pag-' + botao.dataset.pag;
+    document.querySelectorAll('.pagina').forEach(p=>p.classList.remove('visivel'));
+    document.getElementById(idPag).classList.add('visivel');
+  })
+})
+
+// Gerador de nuvens
+const containerNuvens = document.getElementById('nuvens');
+function criarNuvem(){
+  const nuvem = document.createElement('div');
+  nuvem.classList.add('nuvem');
+  nuvem.textContent = '☁️';
+  nuvem.style.left = Math.random()*100 + '%';
+  const duracao = 12 + Math.random()*18;
+  nuvem.style.animationDuration = duracao + 's';
+  nuvem.style.fontSize = (2 + Math.random()*2.2)+'rem';
+  containerNuvens.appendChild(nuvem);
+  setTimeout(()=>nuvem.remove(), duracao*1000);
+}
+setInterval(criarNuvem, 750);
+
+// Gerador de chuva
+const containerChuva = document.getElementById('chuva');
+function criarGota(){
+  const gota = document.createElement('div');
+  gota.classList.add('gota');
+  gota.style.left = Math.random()*100 + '%';
+  const duracao = 0.6 + Math.random()*1.4;
+  gota.style.animationDuration = duracao + 's';
+  gota.style.height = (12 + Math.random()*14)+'px';
+  containerChuva.appendChild(gota);
+  setTimeout(()=>gota.remove(), duracao*1000);
+}
+setInterval(criarGota, 35);
+</script>
+</body>
+</html>
